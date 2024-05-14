@@ -9,7 +9,7 @@ const About: FC<AboutProps> = ({}) => {
 				<div className="wave-element">👋</div>
 				<div>
 					<h1 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-slate-100">
-						Hi - I&apos;m Sam
+						Blog{" "}
 					</h1>
 				</div>
 			</div>
