@@ -7,12 +7,13 @@ import About from "./pages/About";
 import Work from "./pages/Work";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
-
+import BackgroundPattern from "./components/backgroundPattern";
 function App() {
 	return (
 		<div className="flex flex-col mb-5 mr-2">
 			<Router>
 				<Header />
+				<BackgroundPattern />
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/about" element={<About />} />
