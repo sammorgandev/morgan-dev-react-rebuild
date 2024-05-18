@@ -42,7 +42,11 @@ export default function Header() {
 						<a
 							key={item.name}
 							href={item.href}
-							className="text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-600">
+							className={
+								currentPath === item.href.toLowerCase()
+									? "text-indigo-600 text-sm font-semibold leading-6 hover:text-indigo-600"
+									: "text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-600"
+							}>
 							{item.name}
 						</a>
 					))}
