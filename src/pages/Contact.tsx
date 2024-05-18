@@ -5,14 +5,14 @@ import {
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
-export default function Example() {
+export default function Contact() {
 	return (
-		<div className="isolate bg-transparent px-6 py-10 sm:py-10 lg:px-8">
-			<div className="mx-auto max-w-2xl sm:text-center">
-				<h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+		<div className="max-w-lg justify-center">
+			<div>
+				<h2 className="text-left lg:text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
 					Contact me
 				</h2>
-				<p className="mt-2 text-lg leading-8 text-gray-600">
+				<p className="text-left lg:text-center mt-2 text-lg leading-8 text-gray-600">
 					There are a few different ways you can get in touch.{" "}
 				</p>
 			</div>
