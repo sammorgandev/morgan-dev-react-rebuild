@@ -4,9 +4,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Work from "./pages/Work";
+import Work from "./pages/OldWork";
 import Contact from "./pages/Contact";
-import Blog from "./pages/Blog";
 import BackgroundPattern from "./components/backgroundPattern";
 function App() {
 	return (
@@ -19,7 +18,6 @@ function App() {
 					<Route path="/about" element={<About />} />
 					<Route path="/work" element={<Work />} />
 					<Route path="/contact" element={<Contact />} />
-					<Route path="/blog" element={<Blog />} />
 				</Routes>
 			</Router>
 		</div>
