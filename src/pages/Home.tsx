@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Example() {
 	return (
-		<div className="bg-transparent py-8 lg:py-20">
+		<div className="bg-transparent  px-8 py-8 lg:py-20">
 			<div className="mx-auto max-w-2xl">
 				<div className="justify-left mb-8 flex lg:justify-center">
 					<div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:text-slate-300 dark:ring-gray-200/10 dark:hover:ring-gray-200/20">
