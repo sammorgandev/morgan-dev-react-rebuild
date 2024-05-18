@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function Example() {
+export default function Home() {
 	return (
 		<div className="bg-transparent  px-8 py-8 lg:py-20">
 			<div className="mx-auto max-w-2xl">
@@ -8,17 +8,17 @@ export default function Example() {
 					<div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:text-slate-300 dark:ring-gray-200/10 dark:hover:ring-gray-200/20">
 						<div className="flex gap-2 items-center">
 							<div className="h-fit mt-0.5">
-								<img src="/x-dark-mode.png" />
+								<img src="/x-dark-mode.png" alt="" />
 							</div>
 
 							<span className="font-semibold">@_sambubble </span>
-							<a
-								href="https://twitter.com/_sambubble"
+							<Link
+								to="https://twitter.com/_sambubble"
 								target="_blank"
 								className="font-semibold text-indigo-600 dark:text-indigo-400 ml-2">
 								<span className="absolute inset-0" aria-hidden="true" />
 								Follow me<span aria-hidden="true">&rarr;</span>
-							</a>
+							</Link>
 						</div>
 					</div>
 				</div>

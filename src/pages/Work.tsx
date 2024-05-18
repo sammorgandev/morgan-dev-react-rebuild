@@ -9,6 +9,7 @@ interface Post {
 	body: string;
 }
 
+// eslint-disable-next-line no-empty-pattern
 const About: FC<AboutProps> = ({}) => {
 	const [workpostarray, setWorkPosts] = useState<Post[]>([]);
 
@@ -61,7 +62,7 @@ const About: FC<AboutProps> = ({}) => {
 								/>
 								<div className="text-sm leading-6">
 									<p className="font-semibold text-gray-900">
-										<a href="#">
+										<a href="/post/:id">
 											<span className="absolute inset-0" />
 											{post.id}
 										</a>
