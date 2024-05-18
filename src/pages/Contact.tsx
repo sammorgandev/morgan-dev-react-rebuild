@@ -7,13 +7,13 @@ import { Link } from "react-router-dom";
 
 export default function Example() {
 	return (
-		<div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+		<div className="isolate bg-transparent px-6 py-10 sm:py-10 lg:px-8">
 			<div className="mx-auto max-w-2xl sm:text-center">
 				<h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-					Contact sales
+					Contact me
 				</h2>
 				<p className="mt-2 text-lg leading-8 text-gray-600">
-					Aute magna irure deserunt veniam aliqua magna enim voluptate.
+					There are a few different ways you can get in touch.{" "}
 				</p>
 			</div>
 			<div className="mx-auto mt-20 max-w-lg space-y-16">
@@ -26,17 +26,17 @@ export default function Example() {
 					</div>
 					<div>
 						<h3 className="text-base font-semibold leading-7 text-gray-900">
-							Sales support
+							By email
 						</h3>
 						<p className="mt-2 leading-7 text-gray-600">
-							Ut cursus est ut amet. Lobortis eget egestas leo vitae eget
-							porttitor risus blandit. Nunc a in lorem vel iaculis porttitor.
+							Get in touch about collaborations or other opportunities. I don't
+							respond to sales emails.
 						</p>
 						<p className="mt-4">
 							<Link
 								to="#"
 								className="text-sm font-semibold leading-6 text-indigo-600">
-								Contact us <span aria-hidden="true">&rarr;</span>
+								Send an email <span aria-hidden="true">&rarr;</span>
 							</Link>
 						</p>
 					</div>
@@ -47,17 +47,17 @@ export default function Example() {
 					</div>
 					<div>
 						<h3 className="text-base font-semibold leading-7 text-gray-900">
-							Bug reports
+							On twitter (@_sambubble)
 						</h3>
 						<p className="mt-2 leading-7 text-gray-600">
-							Expedita qui non ut quia ipsum voluptatum ipsam pariatur. Culpa
-							vitae ipsum minus eius vero quo quibusdam.
+							I'm most active on twitter - follow me here for updates about
+							@bubble and my other projects.
 						</p>
 						<p className="mt-4">
 							<Link
 								to="#"
 								className="text-sm font-semibold leading-6 text-indigo-600">
-								Report a bug <span aria-hidden="true">&rarr;</span>
+								Follow me <span aria-hidden="true">&rarr;</span>
 							</Link>
 						</p>
 					</div>
@@ -71,17 +71,16 @@ export default function Example() {
 					</div>
 					<div>
 						<h3 className="text-base font-semibold leading-7 text-gray-900">
-							Technical support
+							Instagram
 						</h3>
 						<p className="mt-2 leading-7 text-gray-600">
-							Sint aut modi porro consequatur architecto commodi qui
-							consequatur. Dignissimos adipisci minima.
+							I mostly post about my personal life and my travels on instagram.
 						</p>
 						<p className="mt-4">
 							<Link
 								to="#"
 								className="text-sm font-semibold leading-6 text-indigo-600">
-								Join our Discord <span aria-hidden="true">&rarr;</span>
+								Get in touch <span aria-hidden="true">&rarr;</span>
 							</Link>
 						</p>
 					</div>

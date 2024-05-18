@@ -1,10 +1,7 @@
-import {
-	CheckCircleIcon,
-	InformationCircleIcon,
-} from "@heroicons/react/20/solid";
+import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 
-export default function Example() {
+export default function About() {
 	return (
 		<div className="bg-transparent px-6 py-10 lg:px-8">
 			<div className="mx-auto max-w-3xl text-base leading-7 text-gray-700">
@@ -46,9 +43,7 @@ export default function Example() {
 						<h2 className="text-xl font-bold mt-10">
 							Here are a few things I&apos;m looking for in collaborators:
 						</h2>
-						<ul
-							role="list"
-							className="mt-8 max-w-xl space-y-8 text-gray-600 dark:text-slate-300">
+						<ul className="mt-8 max-w-xl space-y-8 text-gray-600 dark:text-slate-300">
 							<li className="flex gap-x-3">
 								<CheckCircleIcon
 									className="mt-1 h-5 w-5 flex-none text-indigo-600 dark:text-indigo-500"
