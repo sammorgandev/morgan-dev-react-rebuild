@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Layout from "./components/Layout";
-import WorkRoute from "./pages/Work";
+import WorkUI from "./pages/Work";
 function App() {
 	return (
 		<div className="flex flex-col mb-5 mr-2">
@@ -14,7 +14,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/about" element={<About />} />
-						<Route path="/work" element={<WorkRoute />} />
+						<Route path="/work" element={<WorkUI />} />
 						<Route path="/contact" element={<Contact />} />
 					</Routes>
 				</Layout>
