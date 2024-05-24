@@ -6,16 +6,20 @@ interface Post {
 	image?: string;
 	tags?: string[];
 	category?: string;
-	created_at?: string;
+	created_at: string;
 	company_name?: string;
 	company_logo?: string;
 	company_description?: string;
+}
+
+interface ParsedPost extends Post {
+	created_at_date: Date;
 }
 interface WorkProps {}
 
 // eslint-disable-next-line no-empty-pattern
 const WorkUI: FC<WorkProps> = ({}) => {
-	const [posts, setPosts] = useState<Post[]>([]);
+	const [posts, setPosts] = useState<ParsedPost[]>([]);
 	const [loading, setLoading] = useState(true);
 
 	console.log(process.env.REACT_APP_API_URL);
@@ -25,7 +29,21 @@ const WorkUI: FC<WorkProps> = ({}) => {
 			.then((res) => res.json())
 			.then((data) => {
 				if (data.posts.length > 0) {
-					setPosts(data.posts);
+					let parsedPosts = data.posts.map(
+						(post: Post): ParsedPost => ({
+							...post,
+							created_at_date: new Date(post.created_at || Date.now()),
+						})
+					);
+					// Sort posts by created_at_date in descending order
+					parsedPosts = parsedPosts.sort(
+						(
+							a: { created_at_date: { getTime: () => number } },
+							b: { created_at_date: { getTime: () => number } }
+						) => b.created_at_date.getTime() - a.created_at_date.getTime()
+					);
+
+					setPosts(parsedPosts);
 					setLoading(false);
 				} else {
 					console.log(data.posts.length, data);
@@ -55,7 +73,9 @@ const WorkUI: FC<WorkProps> = ({}) => {
 				Work{" "}
 			</h2>
 			<p className="text-left lg:text-center mt-2 text-lg leading-8 text-gray-600">
-				This is my feed of stuff I've worked on.
+				This is my feed of stuff I've worked on. It includes web projects i've
+				built, talks and tutorials videos I've done, and blog posts I've
+				written.
 			</p>
 
 			<div className="mt-8 space-y-20 lg:mt-8 lg:space-y-20">
@@ -74,19 +94,37 @@ const WorkUI: FC<WorkProps> = ({}) => {
 							</div>
 							<div>
 								<div className="flex items-center gap-x-4 text-xs">
-									<time dateTime={post.created_at} className="text-gray-500">
-										{post.created_at}
+									<time
+										dateTime={post.created_at_date?.toLocaleDateString(
+											"en-US",
+											{
+												year: "numeric",
+												month: "long",
+												day: "numeric",
+											}
+										)}
+										className="text-gray-500">
+										{post.created_at_date?.toLocaleDateString("en-US", {
+											year: "numeric",
+											month: "long",
+											day: "numeric",
+										})}
 									</time>
 									<a
 										href={post.category ? `/${post.category}` : "/"}
-										className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
+										className="relative z-10 rounded-full bg-indigo-50 px-3 py-1.5 text-xs font-medium text-indigo-700 hover:bg-indigo-100 transition-all ease-in">
 										{post.category && post.category}
 									</a>
 								</div>
 								<div className="group relative max-w-xl">
-									<h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-										<a href={`/${post.id}`}>
+									<h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 hover:text-indigo-600 hover:font-bold transition-all ease-in">
+										<a
+											href={`/${post.title
+												.replace(/\s/g, "-")
+												.replace(/:/g, "")
+												.toLowerCase()}`}>
 											<span className="absolute inset-0" />
+
 											{post.title}
 										</a>
 									</h3>
@@ -102,17 +140,23 @@ const WorkUI: FC<WorkProps> = ({}) => {
 											className="h-10 w-10 rounded-full bg-gray-50"
 										/>
 										<div className="text-sm leading-6">
-											<p className="font-semibold text-gray-900">
+											<p className="font-semibold text-gray-900 hover:text-indigo-600 hover:font-bold transition-all ease-in">
 												<a
 													href={
 														post.company_name ? `/${post.company_name}` : "/"
 													}>
-													<span className="absolute inset-0" />
 													{post.company_name && post.company_name}
 												</a>
 											</p>
-											<p className="text-gray-600">
-												{post.company_description && post.company_description}
+											<p className="text-gray-600 flex gap-1">
+												{post.tags &&
+													post.tags.map((tag, index) => (
+														<span
+															key={index}
+															className="hover:text-indigo-600 hover:font-bold transition-all ease-in">
+															#{tag}
+														</span>
+													))}
 											</p>
 										</div>
 									</div>

@@ -8,7 +8,7 @@ import Layout from "./components/Layout";
 import WorkUI from "./pages/Work";
 function App() {
 	return (
-		<div className="flex flex-col mb-5 mr-2">
+		<div>
 			<Router>
 				<Layout>
 					<Routes>

@@ -54,7 +54,10 @@ export default function Header() {
 					<Link
 						to="/contact"
 						className="text-sm font-semibold leading-6 text-gray-900">
-						Contact <span aria-hidden="true">&rarr;</span>
+						Get in touch{" "}
+						<span aria-hidden="true" className="transition-all ease-in">
+							{location.pathname === "/contact" ? "↓" : "→"}
+						</span>
 					</Link>
 				</div>
 			</nav>
