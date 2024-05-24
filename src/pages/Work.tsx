@@ -79,7 +79,7 @@ const WorkUI: FC<WorkProps> = ({}) => {
 			<h2 className="text-left lg:text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
 				{pathSegments.length < 4 && pathSegments[1] === "tags"
 					? `# ${pathSegments[2]}`
-					: pathSegments.length < 4
+					: pathSegments.length < 4 && pathSegments.length > 1
 					? pathSegments[2]
 					: "Work"}{" "}
 			</h2>
