@@ -14,7 +14,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 					<Header />
 				</div>
 				<div className="flex bg-transparent px-8 py-4 lg:py-8 justify-center z-10 overflow-auto">
-					<div className="mx-auto max-w-2xl text-base leading-7 text-gray-700">
+					<div className="mx-auto max-w-full text-base leading-7 text-gray-700">
 						{/* Here goes the main content */}
 						{children}
 					</div>

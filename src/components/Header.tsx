@@ -53,7 +53,11 @@ export default function Header() {
 				<div className="hidden lg:flex lg:flex-1 lg:justify-end">
 					<Link
 						to="/contact"
-						className="text-sm font-semibold leading-6 text-gray-900">
+						className={
+							currentPath === "/contact"
+								? "text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-600"
+								: "text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-600"
+						}>
 						Get in touch{" "}
 						<span aria-hidden="true" className="transition-all ease-in">
 							{location.pathname === "/contact" ? "↓" : "→"}

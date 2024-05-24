@@ -1,4 +1,7 @@
+import path from "path";
 import { useEffect, useState, FC } from "react";
+import { useLocation } from "react-router-dom";
+
 interface Post {
 	id: number;
 	title: string;
@@ -61,6 +64,10 @@ const WorkUI: FC<WorkProps> = ({}) => {
 		fetchPosts();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+	const location = useLocation();
+	const pathSegments = location.pathname
+		.split("/")
+		.filter((segment) => segment);
 
 	console.log(posts);
 	if (loading) {
@@ -68,9 +75,13 @@ const WorkUI: FC<WorkProps> = ({}) => {
 	}
 
 	return (
-		<div>
+		<div className="max-w-2xl">
 			<h2 className="text-left lg:text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-				Work{" "}
+				{pathSegments.length < 4 && pathSegments[1] === "tags"
+					? `# ${pathSegments[2]}`
+					: pathSegments.length < 4
+					? pathSegments[2]
+					: "Work"}{" "}
 			</h2>
 			<p className="text-left lg:text-center mt-2 text-lg leading-8 text-gray-600">
 				This is my feed of stuff I've worked on. It includes web projects i've
@@ -111,7 +122,14 @@ const WorkUI: FC<WorkProps> = ({}) => {
 										})}
 									</time>
 									<a
-										href={post.category ? `/${post.category}` : "/"}
+										href={
+											post.category
+												? `/work/categories/${post.category
+														.replace(/\s/g, "-")
+														.replace(/:/g, "")
+														.toLowerCase()}`
+												: "/"
+										}
 										className="relative z-10 rounded-full bg-indigo-50 px-3 py-1.5 text-xs font-medium text-indigo-700 hover:bg-indigo-100 transition-all ease-in">
 										{post.category && post.category}
 									</a>
@@ -119,10 +137,12 @@ const WorkUI: FC<WorkProps> = ({}) => {
 								<div className="group relative max-w-xl">
 									<h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 hover:text-indigo-600 hover:font-bold transition-all ease-in">
 										<a
-											href={`/${post.title
-												.replace(/\s/g, "-")
+											href={`/work/categories/${post.category
+												?.replace(/\s/g, "-")
 												.replace(/:/g, "")
-												.toLowerCase()}`}>
+												.toLowerCase()}
+												/
+												${post.title.replace(/\s/g, "-").replace(/:/g, "").toLowerCase()}`}>
 											<span className="absolute inset-0" />
 
 											{post.title}
@@ -137,7 +157,10 @@ const WorkUI: FC<WorkProps> = ({}) => {
 										<img
 											src={post.company_logo ? post.company_logo : "/"}
 											alt=""
-											className="h-10 w-10 rounded-full bg-gray-50"
+											className={`inset-0 h-10 w-10 bg-transparent object-contain ${
+												post.company_name === "So i Heard Music" &&
+												"rounded-full"
+											}`}
 										/>
 										<div className="text-sm leading-6">
 											<p className="font-semibold text-gray-900 hover:text-indigo-600 hover:font-bold transition-all ease-in">
@@ -154,7 +177,13 @@ const WorkUI: FC<WorkProps> = ({}) => {
 														<span
 															key={index}
 															className="hover:text-indigo-600 hover:font-bold transition-all ease-in">
-															#{tag}
+															<a
+																href={`/work/tags/${tag
+																	.replace(/\s/g, "-")
+																	.replace(/:/g, "")
+																	.toLowerCase()}`}>
+																#{tag}
+															</a>{" "}
 														</span>
 													))}
 											</p>
