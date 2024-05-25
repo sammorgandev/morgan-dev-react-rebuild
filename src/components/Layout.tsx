@@ -16,7 +16,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 				<Header />
 			</div>
 			<main
-				className={`flex-grow mb-6 overflow-auto px-8 py-4 lg:py-8 flex justify-center ${
+				className={`flex-grow mb-6 overflow-auto px-8 py-8 lg:py-8 flex justify-center ${
 					currentPath.pathname === "/" ? "items-center" : "items-start"
 				} z-10`}>
 				<div className="mx-auto max-w-full text-base leading-7 text-gray-700">
