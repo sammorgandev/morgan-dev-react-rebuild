@@ -70,6 +70,13 @@ const WorkUI: FC<WorkProps> = ({}) => {
 		.filter((segment) => segment);
 
 	console.log(posts);
+
+	function toTitleCase(str: string) {
+		return str.replace(/\w\S*/g, function (txt: string) {
+			return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase();
+		});
+	}
+
 	if (loading) {
 		return <div>Loading...</div>;
 	}
@@ -77,13 +84,16 @@ const WorkUI: FC<WorkProps> = ({}) => {
 	return (
 		<div className="max-w-2xl">
 			<h2 className="text-left lg:text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-				{pathSegments.length < 4 && pathSegments[1] === "tags"
-					? `# ${pathSegments[2]}`
-					: pathSegments.length < 4 && pathSegments.length > 1
-					? pathSegments[2]
-					: "Work"}{" "}
+				<div className="flex justify-start lg:justify-center gap-4">
+					<div className="-mt-0.5">👨‍💻</div>
+					{pathSegments.length < 4 && pathSegments[1] === "tags"
+						? `# ${pathSegments[2]}`
+						: pathSegments.length < 4 && pathSegments.length > 1
+						? toTitleCase(pathSegments[2]).replace(/-/g, " ")
+						: "Work"}{" "}
+				</div>
 			</h2>
-			<p className="text-left lg:text-center mt-2 text-lg leading-8 text-gray-600">
+			<p className="text-left mt-6 lg:text-center text-lg leading-8 text-gray-600">
 				This is my feed of stuff I've worked on. It includes web projects i've
 				built, talks and tutorials videos I've done, and blog posts I've
 				written.
@@ -135,7 +145,7 @@ const WorkUI: FC<WorkProps> = ({}) => {
 									</a>
 								</div>
 								<div className="group relative max-w-xl">
-									<h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 hover:text-indigo-600 hover:font-bold transition-all ease-in">
+									<h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 hover:text-indigo-600 hover:text-lg transition-all ease-in">
 										<a
 											href={`/work/categories/${post.category
 												?.replace(/\s/g, "-")

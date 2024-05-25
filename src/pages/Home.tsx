@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Home() {
 	return (
 		<div className="max-w-2xl">
-			<div className="justify-center mb-8 mt-2 flex lg:justify-center">
+			<div className="justify-center mb-8 mt-2 flex h-full lg:justify-center items-center">
 				<div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:text-slate-300 dark:ring-gray-200/10 dark:hover:ring-gray-200/20">
 					<div className="flex gap-2 items-center">
 						<div className="flex">
@@ -51,7 +51,7 @@ export default function Home() {
 					</a>
 					<a
 						href="/about"
-						className="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">
+						className="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300 hover:text-indigo-600 transition-all ease-in">
 						Learn more <span aria-hidden="true">→</span>
 					</a>
 				</div>

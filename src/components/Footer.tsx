@@ -1,23 +1,10 @@
-import { JSX, SVGProps } from "react";
-
-const navigation = {
+import { JSX, SVGProps, useState } from "react";
+import { LoopsClient } from "loops";
+const socialLinks = {
 	social: [
 		{
-			name: "Facebook",
-			href: "#",
-			icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
-				<svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-					<path
-						fillRule="evenodd"
-						d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-						clipRule="evenodd"
-					/>
-				</svg>
-			),
-		},
-		{
 			name: "Instagram",
-			href: "#",
+			href: "https://instagram.com/_sambubble",
 			icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
 				<svg fill="currentColor" viewBox="0 0 24 24" {...props}>
 					<path
@@ -30,7 +17,7 @@ const navigation = {
 		},
 		{
 			name: "X",
-			href: "#",
+			href: "https://x.com/_sambubble",
 			icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
 				<svg fill="currentColor" viewBox="0 0 24 24" {...props}>
 					<path d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z" />
@@ -39,7 +26,7 @@ const navigation = {
 		},
 		{
 			name: "GitHub",
-			href: "#",
+			href: "https://github.com/sammorgandev",
 			icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
 				<svg fill="currentColor" viewBox="0 0 24 24" {...props}>
 					<path
@@ -50,29 +37,38 @@ const navigation = {
 				</svg>
 			),
 		},
-		{
-			name: "YouTube",
-			href: "#",
-			icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
-				<svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-					<path
-						fillRule="evenodd"
-						d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z"
-						clipRule="evenodd"
-					/>
-				</svg>
-			),
-		},
 	],
 };
 
 const currentYear = new Date().getFullYear();
 
-export default function Example() {
+const loopsApiKey = process.env.REACT_APP_LOOPS_API_KEY;
+
+if (!loopsApiKey) {
+	throw new Error("LOOPS_API_KEY is required");
+}
+
+const client = new LoopsClient(loopsApiKey);
+
+export default function Footer() {
+	const [email, setEmail] = useState("");
+
+	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		client
+			.createContact(email)
+			.then((resp) => {
+				console.log(resp);
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+	};
+
 	return (
 		<footer className="bg-transparent" aria-labelledby="footer-heading">
-			<div className="mx-auto max-w-full px-6 pb-8 lg:px-8">
-				<div className="border-t border-gray-900/10 pt-8  lg:flex lg:items-center lg:justify-between">
+			<div className="mx-auto max-w-full pb-4">
+				<div className="border-t px-6 border-gray-900/10 pt-4  lg:flex lg:items-center lg:justify-between">
 					<div>
 						<h3 className="text-sm font-semibold leading-6 text-gray-900">
 							Subscribe to my newsletter
@@ -81,7 +77,9 @@ export default function Example() {
 							I send out monthly thoughts on no-code, code, and building things.
 						</p>
 					</div>
-					<form className="mt-6 sm:flex sm:max-w-md lg:mt-0">
+					<form
+						className="mt-4 sm:flex sm:max-w-md lg:mt-0"
+						onSubmit={handleSubmit}>
 						<label htmlFor="email-address" className="sr-only">
 							Email address
 						</label>
@@ -89,6 +87,8 @@ export default function Example() {
 							type="email"
 							name="email-address"
 							id="email-address"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
 							autoComplete="email"
 							required
 							className="w-full min-w-0 appearance-none rounded-md border-0 bg-white px-3 py-1.5 text-base text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:w-56 sm:text-sm sm:leading-6"
@@ -103,19 +103,22 @@ export default function Example() {
 						</div>
 					</form>
 				</div>
-				<div className="mt-8 border-t border-gray-900/10 pt-8 md:flex md:items-center md:justify-between">
+				<div className="mt-4 px-6 border-t border-gray-900/10 pt-4 md:flex md:items-center md:justify-between">
 					<div className="flex space-x-6 md:order-2">
-						{navigation.social.map((item) => (
+						{socialLinks.social.map((item) => (
 							<a
 								key={item.name}
 								href={item.href}
 								className="text-gray-400 hover:text-indigo-600 hover:font-bold transition-all ease-in">
 								<span className="sr-only">{item.name}</span>
-								<item.icon className="h-6 w-6" aria-hidden="true" />
+								<item.icon
+									className="h-6 w-6 transition-all ease-in"
+									aria-hidden="true"
+								/>
 							</a>
 						))}
 					</div>
-					<p className="mt-8 text-xs leading-5 text-gray-500 md:order-1 md:mt-0">
+					<p className="mt-4 text-xs leading-5 text-gray-500 md:order-1 md:mt-0">
 						&copy; {currentYear} Morgan.dev, LLC. All rights reserved.
 					</p>
 				</div>

@@ -6,7 +6,7 @@ interface logoProps {}
 const Logo: FC<logoProps> = ({}) => {
 	return (
 		<div className="flex lg:flex-1">
-			<Link to="#" className="-m-1.5 p-1.5">
+			<Link to="/" className="-m-1.5 p-1.5">
 				<span className="sr-only">morgan/dev</span>
 				<div className="flex items-center gap-1">
 					<CodeBracketSquareIcon className="w-8 h-8 text-indigo-600 font-bold" />

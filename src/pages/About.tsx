@@ -5,28 +5,12 @@ export default function About() {
 	return (
 		<div className="max-w-2xl overflow-scroll">
 			<h1 className="text-left lg:text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-slate-100">
-				About
+				<div className="flex justify-start lg:justify-center gap-4">
+					<div className="-mt-0.5">💁‍♂️</div> About
+				</div>
 			</h1>
-			<p className="mt-8 text-xl leading-8 dark:text-slate-300">
-				I&apos;m a computer nerd, product enthusiast, and developer who is
-				passionate about{" "}
-				<b>helping small businesses and niche industries grow</b> and thrive.
-			</p>
-			<div className="mt-10 text-left max-w-2xl dark:text-slate-300">
-				<p>
-					I work for{" "}
-					<Link
-						to="https://bubble.io"
-						target="_blank"
-						className="hover:text-white">
-						@bubble
-					</Link>{" "}
-					by day, and I build websites, mobile apps, custom CRMs, lead tracking
-					solutions, and business ops management software in my spare time.{" "}
-				</p>
-				<span>
-					<br></br>
-				</span>
+
+			<div className="mt-6 text-left max-w-2xl dark:text-slate-300">
 				<p>
 					This site is my home for personal work and side projects. I don&apos;t
 					take on a lot of freelance development work, but I&apos;m particularly
@@ -88,7 +72,7 @@ export default function About() {
 					</a>
 					<a
 						href="/work"
-						className="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">
+						className="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300 hover:text-indigo-600 transition-all ease-in">
 						Browse work <span aria-hidden="true">→</span>
 					</a>
 				</div>
