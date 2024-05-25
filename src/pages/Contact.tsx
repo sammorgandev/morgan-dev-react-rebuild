@@ -1,30 +1,6 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
-import { useState } from "react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { Field, Label, Switch } from "@headlessui/react";
-
-function classNames(...classes: string[]) {
-	return classes.filter(Boolean).join(" ");
-}
-
-export default function Example() {
-	const [agreed, setAgreed] = useState(false);
-
+export default function Contact() {
 	return (
-		<div className="bg-transparent px-6 lg:px-8">
+		<div className="bg-transparent ">
 			<div className="mx-auto max-w-2xl text-center">
 				<h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
 					<div className="flex justify-start lg:justify-center gap-4">
@@ -32,7 +8,7 @@ export default function Example() {
 					</div>{" "}
 				</h2>
 
-				<p className="mt-6 text-lg leading-8 text-gray-600">
+				<p className="text-left mt-6 text-lg leading-8 text-gray-600">
 					I&apos;m a builder at heart, and if you&apos;re a designer at heart we
 					should work together.{" "}
 				</p>

@@ -1,4 +1,3 @@
-import path from "path";
 import { useEffect, useState, FC } from "react";
 import { useLocation } from "react-router-dom";
 

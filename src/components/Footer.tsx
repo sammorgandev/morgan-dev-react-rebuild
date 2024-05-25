@@ -1,5 +1,4 @@
 import { JSX, SVGProps, useState } from "react";
-import { LoopsClient } from "loops";
 const socialLinks = {
 	social: [
 		{
@@ -42,28 +41,8 @@ const socialLinks = {
 
 const currentYear = new Date().getFullYear();
 
-const loopsApiKey = process.env.REACT_APP_LOOPS_API_KEY;
-
-if (!loopsApiKey) {
-	throw new Error("LOOPS_API_KEY is required");
-}
-
-const client = new LoopsClient(loopsApiKey);
-
 export default function Footer() {
 	const [email, setEmail] = useState("");
-
-	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		client
-			.createContact(email)
-			.then((resp) => {
-				console.log(resp);
-			})
-			.catch((err) => {
-				console.error(err);
-			});
-	};
 
 	return (
 		<footer className="bg-transparent" aria-labelledby="footer-heading">
@@ -77,9 +56,7 @@ export default function Footer() {
 							I send out monthly thoughts on no-code, code, and building things.
 						</p>
 					</div>
-					<form
-						className="mt-4 sm:flex sm:max-w-md lg:mt-0"
-						onSubmit={handleSubmit}>
+					<form className="mt-4 sm:flex sm:max-w-md lg:mt-0">
 						<label htmlFor="email-address" className="sr-only">
 							Email address
 						</label>

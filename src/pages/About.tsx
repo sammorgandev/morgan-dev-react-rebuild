@@ -65,16 +65,16 @@ export default function About() {
 					</li>
 				</ul>
 				<div className="mt-10 flex items-center justify-left gap-x-6 lg:justify-left">
-					<a
-						href="/contact"
+					<Link
+						to="/contact"
 						className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
 						Get in touch
-					</a>
-					<a
-						href="/work"
+					</Link>
+					<Link
+						to="/work"
 						className="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300 hover:text-indigo-600 transition-all ease-in">
 						Browse work <span aria-hidden="true">→</span>
-					</a>
+					</Link>
 				</div>
 			</div>
 		</div>

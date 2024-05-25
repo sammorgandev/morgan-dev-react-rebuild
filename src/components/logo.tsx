@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CodeBracketSquareIcon } from "@heroicons/react/24/outline";
 interface logoProps {}
 
+// eslint-disable-next-line no-empty-pattern
 const Logo: FC<logoProps> = ({}) => {
 	return (
 		<div className="flex lg:flex-1">
