@@ -1,4 +1,4 @@
-import { JSX, SVGProps, useState } from "react";
+import { JSX, SVGProps, SetStateAction, useState } from "react";
 const socialLinks = {
 	social: [
 		{
@@ -43,6 +43,60 @@ const currentYear = new Date().getFullYear();
 
 export default function Footer() {
 	const [email, setEmail] = useState("");
+	const [token, setToken] = useState("");
+
+	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		fetch(`{${process.env.REACT_APP_API_URL}}/login`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				username: process.env.REACT_APP_API_CLIENT_USERNAME,
+				password: process.env.REACT_APP_API_CLIENT_KEY,
+			}),
+		})
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error(
+						"There was an error getting your token. Please try again."
+					);
+				}
+				return response.json();
+			})
+			.then((data) => {
+				setToken(data.token);
+				return data.token;
+			})
+			.then((token) => {
+				return fetch(`{${process.env.REACT_APP_API_URL}}/contacts`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${token}`,
+					},
+					body: JSON.stringify({ email }),
+				});
+			})
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error(
+						"There was an error adding your email. Please try again."
+					);
+				}
+				alert("Success! You are now subscribed.");
+				setEmail("");
+				(document.getElementById("email-address") as HTMLInputElement).value =
+					"";
+			})
+			.catch((error) => {
+				alert(error.message);
+				setEmail("");
+				(document.getElementById("email-address") as HTMLInputElement).value =
+					"";
+			});
+	};
 
 	return (
 		<footer className="bg-transparent" aria-labelledby="footer-heading">
@@ -56,7 +110,9 @@ export default function Footer() {
 							I send out monthly thoughts on no-code, code, and building things.
 						</p>
 					</div>
-					<form className="mt-4 sm:flex sm:max-w-md lg:mt-0">
+					<form
+						className="mt-4 sm:flex sm:max-w-md lg:mt-0"
+						onSubmit={handleSubmit}>
 						<label htmlFor="email-address" className="sr-only">
 							Email address
 						</label>
