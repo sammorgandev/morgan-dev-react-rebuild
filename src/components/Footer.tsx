@@ -1,4 +1,6 @@
 import { JSX, SVGProps, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const socialLinks = {
 	social: [
 		{
@@ -40,6 +42,7 @@ const socialLinks = {
 };
 
 const currentYear = new Date().getFullYear();
+const successAlert = () => toast("Success! You are now subscribed.");
 
 export default function Footer() {
 	const [email, setEmail] = useState("");
@@ -47,7 +50,7 @@ export default function Footer() {
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		fetch(`{${process.env.REACT_APP_API_URL}}/login`, {
+		fetch(`${process.env.REACT_APP_API_URL}/login`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -67,10 +70,11 @@ export default function Footer() {
 			})
 			.then((data) => {
 				setToken(data.token);
+				console.log(token);
 				return token;
 			})
 			.then((token) => {
-				return fetch(`{${process.env.REACT_APP_API_URL}}/contacts`, {
+				return fetch(`${process.env.REACT_APP_API_URL}/contacts`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
@@ -85,7 +89,7 @@ export default function Footer() {
 						"There was an error adding your email. Please try again."
 					);
 				}
-				alert("Success! You are now subscribed.");
+				successAlert();
 				setEmail("");
 				(document.getElementById("email-address") as HTMLInputElement).value =
 					"";
@@ -110,6 +114,7 @@ export default function Footer() {
 							I send out monthly thoughts on no-code, code, and building things.
 						</p>
 					</div>
+					<ToastContainer />
 					<form
 						className="mt-4 sm:flex sm:max-w-md lg:mt-0"
 						onSubmit={handleSubmit}>
