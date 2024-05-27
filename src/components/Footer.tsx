@@ -1,4 +1,4 @@
-import { JSX, SVGProps, SetStateAction, useState } from "react";
+import { JSX, SVGProps, useState } from "react";
 const socialLinks = {
 	social: [
 		{
@@ -67,7 +67,7 @@ export default function Footer() {
 			})
 			.then((data) => {
 				setToken(data.token);
-				return data.token;
+				return token;
 			})
 			.then((token) => {
 				return fetch(`{${process.env.REACT_APP_API_URL}}/contacts`, {
