@@ -38,8 +38,8 @@ export default function Contact() {
 			})
 			.then((data) => {
 				setToken(data.token);
-				console.log(token);
-				return token;
+				console.log(data.token);
+				return data.token;
 			})
 			.then((token) => {
 				return fetch(`${process.env.REACT_APP_API_URL}/send_form`, {
