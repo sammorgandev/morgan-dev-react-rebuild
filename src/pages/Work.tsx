@@ -1,5 +1,5 @@
 import { useEffect, useState, FC } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 interface Post {
 	id: number;
@@ -82,7 +82,7 @@ const WorkUI: FC<WorkProps> = ({}) => {
 
 	return (
 		<div className="max-w-2xl">
-			<h2 className="text-left lg:text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+			<h2 className="text-left lg:text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
 				<div className="flex justify-start lg:justify-center gap-4">
 					<div className="-mt-0.5">👨‍💻</div>
 					{pathSegments.length < 4 && pathSegments[1] === "tags"
@@ -92,7 +92,7 @@ const WorkUI: FC<WorkProps> = ({}) => {
 						: "Work"}{" "}
 				</div>
 			</h2>
-			<p className="text-left mt-6 lg:text-center text-lg leading-8 text-gray-600">
+			<p className="text-left mt-6 lg:text-center text-lg leading-8 text-gray-600 dark:text-gray-300">
 				This is my feed of stuff I've worked on. It includes web projects i've
 				built, talks and tutorials videos I've done, and blog posts I've
 				written.
@@ -104,7 +104,7 @@ const WorkUI: FC<WorkProps> = ({}) => {
 						<article
 							key={post.id}
 							className="relative isolate flex flex-col gap-8 lg:flex-row">
-							<div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
+							<div className="relative mb-8 aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
 								<img
 									src={post.image ? post.image : "/"}
 									alt=""
@@ -123,7 +123,7 @@ const WorkUI: FC<WorkProps> = ({}) => {
 												day: "numeric",
 											}
 										)}
-										className="text-gray-500">
+										className="text-gray-500 dark:text-gray-300">
 										{post.created_at_date?.toLocaleDateString("en-US", {
 											year: "numeric",
 											month: "long",
@@ -139,12 +139,12 @@ const WorkUI: FC<WorkProps> = ({}) => {
 														.toLowerCase()}`
 												: "/"
 										}
-										className="relative z-10 rounded-full bg-indigo-50 px-3 py-1.5 text-xs font-medium text-indigo-700 hover:bg-indigo-100 transition-all ease-in">
+										className="relative z-10 rounded-full bg-indigo-50 dark:bg-gray-800 px-3 py-1.5 text-xs font-medium text-indigo-700 dark:text-indigo-400 hover:bg-indigo-100 transition-all ease-in">
 										{post.category && post.category}
 									</a>
 								</div>
 								<div className="group relative max-w-xl">
-									<h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 hover:text-indigo-600 hover:text-lg transition-all ease-in">
+									<h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 dark:text-gray-200 dark:hover:text-indigo-400 hover:text-indigo-600 hover:text-lg transition-all ease-in">
 										<a
 											href={`/work/categories/${post.category
 												?.replace(/\s/g, "-")
@@ -152,52 +152,28 @@ const WorkUI: FC<WorkProps> = ({}) => {
 												.toLowerCase()}
 												/
 												${post.title.replace(/\s/g, "-").replace(/:/g, "").toLowerCase()}`}>
-											<span className="absolute inset-0" />
-
 											{post.title}
 										</a>
 									</h3>
-									<p className="mt-5 text-sm leading-6 text-gray-600">
+									<p className="text-gray-600 dark:text-gray-400 flex gap-1">
+										{post.tags &&
+											post.tags.map((tag, index) => (
+												<span
+													key={index}
+													className="hover:text-indigo-600 dark:hover:text-indigo-400 hover:font-bold transition-all ease-in">
+													<a
+														href={`/work/tags/${tag
+															.replace(/\s/g, "-")
+															.replace(/:/g, "")
+															.toLowerCase()}`}>
+														#{tag}
+													</a>{" "}
+												</span>
+											))}
+									</p>
+									<p className="mt-5 text-sm leading-6 text-gray-600 dark:text-gray-300">
 										{post.body}
 									</p>
-								</div>
-								<div className="mt-6 flex border-t border-gray-900/5 pt-6">
-									<div className="relative flex items-center gap-x-4">
-										<img
-											src={post.company_logo ? post.company_logo : "/"}
-											alt=""
-											className={`inset-0 h-10 w-10 bg-transparent object-contain ${
-												post.company_name === "So i Heard Music" &&
-												"rounded-full"
-											}`}
-										/>
-										<div className="text-sm leading-6">
-											<p className="font-semibold text-gray-900 hover:text-indigo-600 hover:font-bold transition-all ease-in">
-												<a
-													href={
-														post.company_name ? `/${post.company_name}` : "/"
-													}>
-													{post.company_name && post.company_name}
-												</a>
-											</p>
-											<p className="text-gray-600 flex gap-1">
-												{post.tags &&
-													post.tags.map((tag, index) => (
-														<span
-															key={index}
-															className="hover:text-indigo-600 hover:font-bold transition-all ease-in">
-															<a
-																href={`/work/tags/${tag
-																	.replace(/\s/g, "-")
-																	.replace(/:/g, "")
-																	.toLowerCase()}`}>
-																#{tag}
-															</a>{" "}
-														</span>
-													))}
-											</p>
-										</div>
-									</div>
 								</div>
 							</div>
 						</article>

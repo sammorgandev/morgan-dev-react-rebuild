@@ -105,12 +105,12 @@ export default function Footer() {
 	return (
 		<footer className="bg-transparent" aria-labelledby="footer-heading">
 			<div className="mx-auto max-w-full pb-4">
-				<div className="border-t px-6 border-gray-900/10 pt-4  lg:flex lg:items-center lg:justify-between">
+				<div className="border-t px-6 border-gray-900/10 pt-4 dark:border-gray-400/20 lg:flex lg:items-center lg:justify-between">
 					<div>
-						<h3 className="text-sm font-semibold leading-6 text-gray-900">
+						<h3 className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">
 							Subscribe to my newsletter
 						</h3>
-						<p className="mt-2 text-sm leading-6 text-gray-600">
+						<p className="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">
 							I send out monthly thoughts on no-code, code, and building things.
 						</p>
 					</div>
@@ -129,13 +129,13 @@ export default function Footer() {
 							onChange={(e) => setEmail(e.target.value)}
 							autoComplete="email"
 							required
-							className="w-full min-w-0 appearance-none rounded-md border-0 bg-white px-3 py-1.5 text-base text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:w-56 sm:text-sm sm:leading-6"
+							className="block w-full rounded-md border-0 dark:bg-white/5 px-3.5 py-2 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-white/10 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 dark:focus:ring-indigo-500 sm:text-sm sm:leading-6"
 							placeholder="Enter your email"
 						/>
 						<div className="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
 							<button
 								type="submit"
-								className="flex w-full items-center justify-start md:justify-center bg-transparent px-1 py-2 text-sm font-semibold text-indigo-600">
+								className="flex w-full items-center justify-start md:justify-center bg-transparent px-1 py-2 text-sm font-semibold text-indigo-600 dark:text-indigo-400">
 								Subscribe →
 							</button>
 						</div>
@@ -147,7 +147,7 @@ export default function Footer() {
 							<a
 								key={item.name}
 								href={item.href}
-								className="text-gray-400 hover:text-indigo-600 hover:font-bold transition-all ease-in">
+								className="text-gray-400 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:font-bold transition-all ease-in">
 								<span className="sr-only">{item.name}</span>
 								<item.icon
 									className="h-6 w-6 transition-all ease-in"
@@ -156,8 +156,12 @@ export default function Footer() {
 							</a>
 						))}
 					</div>
-					<p className="mt-4 text-xs leading-5 text-gray-500 md:order-1 md:mt-0">
-						&copy; {currentYear} Morgan.dev, LLC. All rights reserved.
+					<p className="mt-4 text-xs leading-5 text-gray-500 dark:text-gray-400 md:order-1 md:mt-0">
+						&copy; {currentYear} 💁‍♂️ This site is built from a react front end
+						and rust 🦀 backend.{" "}
+						<a href="/" className="text-indigo-400">
+							Learn more
+						</a>
 					</p>
 				</div>
 			</div>

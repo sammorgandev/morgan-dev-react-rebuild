@@ -7,26 +7,30 @@ import Contact from "./pages/Contact";
 import Layout from "./components/Layout";
 import WorkUI from "./pages/Work";
 import WorkPost from "./pages/WorkPost";
+import { ThemeProvider } from "./components/ThemeProvider";
+
 function App() {
 	return (
-		<div>
-			<Router>
-				<Layout>
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/about" element={<About />} />
-						<Route path="/work" element={<WorkUI />} />
-						<Route path="/work/categories/:category" element={<WorkUI />} />
-						<Route path="/work/tags/:tag" element={<WorkUI />} />
-						<Route
-							path="/work/categories/:category/:slug"
-							element={<WorkPost />}
-						/>
-						<Route path="/contact" element={<Contact />} />
-					</Routes>
-				</Layout>
-			</Router>
-		</div>
+		<ThemeProvider>
+			<div>
+				<Router>
+					<Layout>
+						<Routes>
+							<Route path="/" element={<Home />} />
+							<Route path="/about" element={<About />} />
+							<Route path="/work" element={<WorkUI />} />
+							<Route path="/work/categories/:category" element={<WorkUI />} />
+							<Route path="/work/tags/:tag" element={<WorkUI />} />
+							<Route
+								path="/work/categories/:category/:slug"
+								element={<WorkPost />}
+							/>
+							<Route path="/contact" element={<Contact />} />
+						</Routes>
+					</Layout>
+				</Router>
+			</div>
+		</ThemeProvider>
 	);
 }
 

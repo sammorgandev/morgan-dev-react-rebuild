@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 	let currentPath = useLocation();
 	return (
-		<div className="relative min-h-screen flex flex-col">
+		<div className="relative min-h-screen flex flex-col dark:bg-gray-900">
 			<div className="fixed inset-0 z-0">
 				<BackgroundPattern />
 			</div>
