@@ -10,14 +10,15 @@ export default function About() {
 				</div>
 			</h1>
 
-			<div className="mt-6 text-left max-w-2xl dark:text-slate-300">
+			<div className="mt-6 text-left text-lg max-w-2xl dark:text-slate-300">
 				<p>
 					This site is my home for personal work and side projects. I don&apos;t
 					take on a lot of freelance development work, but I&apos;m particularly
 					passionate about helping small businesses and niche industries use
-					technology and automation to supercharge their operations - so if that
-					sounds like something you&apos;re looking for in a developer, I&apos;m
-					always open to networking and connection opportunities.
+					technology and automation to supercharge their operations. <br></br>
+					<br></br>If that sounds like something you&apos;re looking for in a
+					developer, I&apos;m always open to networking and connection
+					opportunities.
 				</p>
 				<h2 className="text-xl font-bold mt-10">
 					Here are a few things I&apos;m looking for in collaborators:

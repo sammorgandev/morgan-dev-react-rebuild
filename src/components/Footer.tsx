@@ -159,7 +159,9 @@ export default function Footer() {
 					<p className="mt-4 text-xs leading-5 text-gray-500 dark:text-gray-400 md:order-1 md:mt-0">
 						&copy; {currentYear} 💁‍♂️ This site is built from a react front end
 						and rust 🦀 backend.{" "}
-						<a href="/" className="text-indigo-400">
+						<a
+							href="/work/categories/projects/about-this-site"
+							className="text-indigo-400">
 							Learn more
 						</a>
 					</p>

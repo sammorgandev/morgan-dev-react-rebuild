@@ -76,13 +76,15 @@ export default function Contact() {
 
 				<p className="text-left mt-6 text-lg leading-8 text-gray-600 dark:text-slate-300">
 					I&apos;m a builder at heart, and if you&apos;re a designer at heart we
-					should work together.{" "}
+					should work together. I&apos;m particularly passionate about helping
+					small businesses and niche industries use technology and automation to
+					supercharge their operations.
 				</p>
 			</div>
 			<form
 				action="#"
 				method="POST"
-				className="mx-auto mt-7 max-w-xl"
+				className="mx-auto mt-7 max-w-2xl"
 				onSubmit={handleSubmit}>
 				<div className="flex flex-col gap-6">
 					<div className="flex w-full gap-6">

@@ -104,11 +104,11 @@ const WorkUI: FC<WorkProps> = ({}) => {
 	return (
 		<div className="max-w-2xl">
 			{currentView() !== "work" && (
-				<Link to="/work">
-					<div className="flex text-xs items-center gap-2 mb-6 text-gray-400 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+				<a href="/work">
+					<div className="flex text-xs items-center lg:justify-center lg:ml-6 gap-2 mb-6 text-gray-400 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400">
 						<BackwardIcon width={15} height={15} /> BACK
 					</div>
-				</Link>
+				</a>
 			)}
 			<h2 className="text-left lg:text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
 				<div className="flex justify-start lg:justify-center gap-4">
@@ -121,7 +121,7 @@ const WorkUI: FC<WorkProps> = ({}) => {
 				</div>
 			</h2>
 
-			<p className="text-left mt-6 lg:text-center text-lg leading-8 text-gray-600 dark:text-gray-300">
+			<p className="text-left mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
 				This is my feed of stuff I've worked on. It includes web projects i've
 				built, talks and tutorials videos I've done, and blog posts I've
 				written.
@@ -173,7 +173,7 @@ const WorkUI: FC<WorkProps> = ({}) => {
 									</a>
 								</div>
 								<div className="group relative max-w-xl">
-									<h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 dark:text-gray-200 dark:hover:text-indigo-400 hover:text-indigo-600 hover:text-lg transition-all ease-in">
+									<h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 dark:text-gray-200 dark:hover:text-indigo-400 hover:text-indigo-600 transition-all ease-in">
 										<a
 											href={`/work/categories/${post.category
 												?.replace(/\s/g, "-")
