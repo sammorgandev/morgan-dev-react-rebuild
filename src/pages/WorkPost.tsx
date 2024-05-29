@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Post } from "../pages/Work";
 import { BackwardIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
+import YoutubePlayer from "../components/YoutubePlayer.tsx";
 const jobOpenings = [
 	{
 		id: 1,
@@ -83,11 +84,17 @@ export default function WorkPost() {
 						<p className="mt-6 text-xl leading-8 text-gray-600 dark:text-gray-300">
 							{post?.body}
 						</p>
-						<img
-							src={post?.image}
-							alt=""
-							className="mt-16 aspect-auto w-full rounded-2xl bg-gray-50 object-cover lg:aspect-auto lg:h-[34.5rem]"
-						/>
+						{post?.video ? (
+							<div className="mt-8">
+								<YoutubePlayer videoId={post?.video} />
+							</div>
+						) : (
+							<img
+								src={post?.image}
+								alt=""
+								className="mt-8 aspect-auto w-full rounded-2xl bg-gray-50 object-cover lg:aspect-auto "
+							/>
+						)}
 					</div>
 					<div className="w-full max-w2xl lg:flex-auto">
 						<h3 className="sr-only">Job openings</h3>

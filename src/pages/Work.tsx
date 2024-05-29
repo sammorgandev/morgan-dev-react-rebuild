@@ -13,7 +13,8 @@ export interface Post {
 	company_name?: string;
 	company_logo?: string;
 	company_description?: string;
-	slug: String;
+	slug: string;
+	video?: string;
 }
 
 interface ParsedPost extends Post {

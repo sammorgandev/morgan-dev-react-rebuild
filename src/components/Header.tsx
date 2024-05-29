@@ -68,7 +68,7 @@ export default function Header() {
 							{theme === "dark" ? (
 								<MoonIcon width={15} height={15} className="text-indigo-600" />
 							) : (
-								<SunIcon width={15} height={15} className="text-yellow-500" />
+								<SunIcon width={15} height={15} className="text-yellow-600" />
 							)}
 						</div>
 					</div>
