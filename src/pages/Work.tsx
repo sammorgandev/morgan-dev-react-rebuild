@@ -1,7 +1,9 @@
 import { useEffect, useState, FC } from "react";
 import { useLocation, Link } from "react-router-dom";
+import Breadcrumbs from "../components/Breadcrumbs";
+import { BackwardIcon } from "@heroicons/react/20/solid";
 
-interface Post {
+export interface Post {
 	id: number;
 	title: string;
 	body: string;
@@ -12,6 +14,7 @@ interface Post {
 	company_name?: string;
 	company_logo?: string;
 	company_description?: string;
+	slug: String;
 }
 
 interface ParsedPost extends Post {
@@ -27,7 +30,15 @@ const WorkUI: FC<WorkProps> = ({}) => {
 	console.log(process.env.REACT_APP_API_URL);
 
 	const fetchPosts = () => {
-		fetch(`${process.env.REACT_APP_API_URL}/posts`)
+		fetch(
+			`${process.env.REACT_APP_API_URL}/posts${
+				currentView() === "category"
+					? `/category/${pathSegments[2]}`
+					: currentView() === "tag"
+					? `/tag/${pathSegments[2]}`
+					: ""
+			}`
+		) // ${process.env.REACT_APP_API_URL}/posts
 			.then((res) => res.json())
 			.then((data) => {
 				if (data.posts.length > 0) {
@@ -67,7 +78,17 @@ const WorkUI: FC<WorkProps> = ({}) => {
 	const pathSegments = location.pathname
 		.split("/")
 		.filter((segment) => segment);
-
+	const currentView = () => {
+		if (pathSegments.length === 3 && pathSegments[1] === "tags") {
+			return "tag";
+		} else if (pathSegments.length === 3 && pathSegments.length > 1) {
+			return "category";
+		} else if (pathSegments.length === 4) {
+			return "post";
+		} else {
+			return "work";
+		}
+	};
 	console.log(posts);
 
 	function toTitleCase(str: string) {
@@ -82,6 +103,13 @@ const WorkUI: FC<WorkProps> = ({}) => {
 
 	return (
 		<div className="max-w-2xl">
+			{currentView() !== "work" && (
+				<Link to="/work">
+					<div className="flex text-xs items-center gap-2 mb-6 text-gray-400 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+						<BackwardIcon width={15} height={15} /> BACK
+					</div>
+				</Link>
+			)}
 			<h2 className="text-left lg:text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
 				<div className="flex justify-start lg:justify-center gap-4">
 					<div className="-mt-0.5">👨‍💻</div>
@@ -92,6 +120,7 @@ const WorkUI: FC<WorkProps> = ({}) => {
 						: "Work"}{" "}
 				</div>
 			</h2>
+
 			<p className="text-left mt-6 lg:text-center text-lg leading-8 text-gray-600 dark:text-gray-300">
 				This is my feed of stuff I've worked on. It includes web projects i've
 				built, talks and tutorials videos I've done, and blog posts I've
@@ -104,7 +133,7 @@ const WorkUI: FC<WorkProps> = ({}) => {
 						<article
 							key={post.id}
 							className="relative isolate flex flex-col gap-8 lg:flex-row">
-							<div className="relative mb-8 aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
+							<div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
 								<img
 									src={post.image ? post.image : "/"}
 									alt=""

@@ -64,11 +64,11 @@ export default function Header() {
 						<div
 							className={`toggle-inner ${
 								theme === "dark" ? "translate-x-4" : ""
-							} absolute left-0 top-0 mt-1 ml-1 w-4 h-4 rounded-full transition-transform duration-200 ease-in bg-white dark:bg-white/50`}>
+							} absolute left-0 top-0 mt-1 ml-1 w-4 h-4 rounded-full transition-transform duration-200 ease-in bg-yellow-100 dark:bg-indigo-100`}>
 							{theme === "dark" ? (
-								<MoonIcon width={15} height={15} />
+								<MoonIcon width={15} height={15} className="text-indigo-600" />
 							) : (
-								<SunIcon width={15} height={15} />
+								<SunIcon width={15} height={15} className="text-yellow-500" />
 							)}
 						</div>
 					</div>
