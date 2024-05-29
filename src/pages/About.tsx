@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function About() {
 	return (
-		<div className="max-w-2xl overflow-scroll">
+		<div className="max-w-2xl">
 			<h1 className="text-left lg:text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-slate-100">
 				<div className="flex justify-start lg:justify-center gap-4">
 					<div className="-mt-0.5">💁‍♂️</div> About
