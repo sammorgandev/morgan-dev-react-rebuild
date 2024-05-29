@@ -1,5 +1,5 @@
 import { useEffect, useState, FC } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { BackwardIcon } from "@heroicons/react/20/solid";
 
 export interface Post {

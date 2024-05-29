@@ -46,6 +46,7 @@ const successAlert = () => toast("Success! You are now subscribed.");
 
 export default function Footer() {
 	const [email, setEmail] = useState("");
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [token, setToken] = useState("");
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

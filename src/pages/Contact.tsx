@@ -6,6 +6,7 @@ const successAlert = () =>
 	toast("Thanks for reaching out! I'll get back to you soon.");
 
 export default function Contact() {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [token, setToken] = useState("");
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
