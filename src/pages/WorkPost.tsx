@@ -125,11 +125,11 @@ export default function WorkPost() {
 							))}
 						</ul>
 						<div className="mt-8 flex border-t border-gray-100 pt-8">
-							<a
-								href="#"
+							<Link
+								to="#"
 								className="text-sm font-semibold leading-6 text-indigo-600 dark:text-indigo-400 hover:text-indigo-500">
 								View all openings <span aria-hidden="true">&rarr;</span>
-							</a>
+							</Link>
 						</div>
 					</div>
 				</div>

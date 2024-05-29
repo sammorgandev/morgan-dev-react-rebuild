@@ -1,6 +1,5 @@
 import { useEffect, useState, FC } from "react";
 import { useLocation, Link } from "react-router-dom";
-import Breadcrumbs from "../components/Breadcrumbs";
 import { BackwardIcon } from "@heroicons/react/20/solid";
 
 export interface Post {
