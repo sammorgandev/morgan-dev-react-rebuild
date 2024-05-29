@@ -60,7 +60,7 @@ export default function Header() {
 						/>
 						<label
 							htmlFor="toggle"
-							className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-100 hover:shadow-sm dark:bg-white/10 cursor-pointer"></label>
+							className="toggle-label block overflow-hidden h-6 rounded-full bg-indigo-100 hover:shadow-sm dark:bg-white/10 cursor-pointer"></label>
 						<div
 							className={`toggle-inner ${
 								theme === "dark" ? "translate-x-4" : ""
