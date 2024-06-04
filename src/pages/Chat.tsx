@@ -83,32 +83,6 @@ export default function Chat() {
 			.catch((error) => {
 				alert(error.message);
 			});
-		// OLD AXIOS CODE - DEPRECATED
-		//		const response = await axios.post(
-		//			"http://localhost:8080/chat",
-		//			{
-		//				stream: true,
-		//				input: {
-		//					prompt: prompt,
-		//					prompt_template:
-		//						"<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nYou are a helpful assistant<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
-		//				},
-		//			},
-		//			{
-		//				headers: {
-		//					Authorization:
-		//						"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXBhYmFzZSIsImV4cCI6MTcxNzU0ODU4Mn0.4nK1MHFtxmlVPZkDGNSEQG45irWFQ_c1lN6fNPupaEA",
-		//				},
-		//			}
-		//		);
-		//      setStreamUrl(response.data);
-		//      setMessages((prevMessages) => [
-		//      	...prevMessages,
-		//      	{ text: prompt, streaming: true },
-		//      ]);
-		//      console.log(messages);
-
-		//      setPrompt("");
 	};
 	const messagesRef = useRef<Message[] | undefined>();
 	messagesRef.current = messages || [];
