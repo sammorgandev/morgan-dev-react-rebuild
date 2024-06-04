@@ -14,6 +14,7 @@ import WorkUI from "./pages/Work";
 import WorkPost from "./pages/WorkPost";
 import { ThemeProvider } from "./components/ThemeProvider";
 import Admin from "./pages/Admin";
+import Login from "./pages/Login";
 import Chat from "./pages/Chat";
 
 function App() {
@@ -44,6 +45,7 @@ function RoutesWithLayout() {
 				<Route path="/work/categories/:category/:slug" element={<WorkPost />} />
 				<Route path="/contact" element={<Contact />} />
 				<Route path="/chat" element={<Chat />} />
+				<Route path="/login" element={<Login />} />
 			</Routes>
 		</Layout>
 	) : (
